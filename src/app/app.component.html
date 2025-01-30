@@ -1,0 +1,14 @@
+<nav class="navbar bg-body">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Disney</a>
+    <form class="d-flex mx-auto" role="search">
+      <input class="form-control" type="search" placeholder="Find a character..." aria-label="Search">
+    </form>
+    <button routerLink="view-profile" class="btn btn-primary">User</button>
+  </div>
+</nav>
+<main class="container">
+  <router-outlet />
+  <app-featured-characters/>
+</main>
+<app-footer/>
