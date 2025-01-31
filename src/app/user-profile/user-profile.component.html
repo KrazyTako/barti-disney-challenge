@@ -1,14 +1,22 @@
 <div class="bg-body-secondary p-5">
-  <h1>User profile works!</h1>
   @if (userInfo) {
-    <p>
-      You have an account
-    </p>
+    <h2>{{ userInfo.firstName + ' ' + userInfo.lastName }}</h2>
+    <p class="small">Last Updated {{userInfo.lastUpdated | date: 'longDate' }}</p>
+    <div>
+      <p>Age: {{userInfo.dob}}</p>
+      <p>Location: {{userInfo.city}}, {{userInfo.state}}</p>
+      <p>Favorite Character: {{userInfo.favoriteCharacter}}</p>
+      <p>Favorite Ride: {{userInfo.favoriteRide}}</p>
+      <p>Favorite Movie: {{userInfo.favoriteMovie}}</p>
+      <p>Favorite Disney Theme Park: {{userInfo.favoriteDisneyPark}}</p>
+    </div>
   } @else {
     <p>
       You do not yet have an account!<br>
       Click below to create one
     </p>
   }
-  <a class="btn btn-primary" routerLink="/edit-profile">Edit Profile</a>
+  <div>
+    <a class="btn btn-primary" routerLink="/edit-profile">Edit Profile</a>
+  </div>
 </div>

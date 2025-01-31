@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {UserInformation, UserService} from '../services/user.service';
 
 @Component({
@@ -18,11 +18,10 @@ export class EditUserProfileComponent {
   userService = inject(UserService);
   router = inject(Router);
 
-  currentUser: UserInformation | null = null;
+  currentUser = this.userService.getCurrentUser();
   formGroup;
 
   constructor() {
-    this.currentUser = this.userService.getCurrentUser();
     this.formGroup = new FormGroup({
       firstName: new FormControl<string | null>(null, [Validators.required, Validators.maxLength(50)]),
       lastName: new FormControl<string | null>(null, [Validators.required, Validators.maxLength(50)]),
@@ -31,6 +30,8 @@ export class EditUserProfileComponent {
       state: new FormControl<string | null>(null, Validators.maxLength(50)),
       favoriteCharacter: new FormControl<string | null>(null, Validators.maxLength(50)),
       favoriteRide: new FormControl<string | null>(null, Validators.maxLength(50)),
+      favoriteMovie: new FormControl<string | null>(null, Validators.maxLength(50)),
+      favoriteDisneyPark: new FormControl<string | null>(null, Validators.maxLength(50)),
     });
     if (this.currentUser) {
       this.formGroup.patchValue(this.currentUser);

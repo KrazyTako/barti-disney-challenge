@@ -38,8 +38,22 @@
         <input [formControl]="formGroup.controls.favoriteRide" class="form-control" id="favoriteRideInput">
       </div>
     </div>
+    <div class="row mb-3">
+      <div class="col">
+        <label for="favoriteMovieInput" class="form-label">Favorite Movie</label>
+        <input [formControl]="formGroup.controls.favoriteMovie" class="form-control" id="favoriteMovieInput">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-6">
+        <label for="favoriteDisneyParkInput" class="form-label">Favorite Disney Theme Park</label>
+        <input [formControl]="formGroup.controls.favoriteDisneyPark" class="form-control" id="favoriteDisneyParkInput">
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary me-3">Update Profile</button>
     <button type="button" class="btn btn-secondary" routerLink="/view-profile">Cancel</button>
-    <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
+    @if (currentUser) {
+      <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
+    }
   </form>
 </div>

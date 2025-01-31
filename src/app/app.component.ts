@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   searchText = '';
   private searchSubject = new Subject<string>();
 
-
   router = inject(Router);
 
   ngOnInit(): void {

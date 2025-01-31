@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {combineLatest, combineLatestWith, map, Observable, tap} from 'rxjs';
+import {combineLatest, map, Observable} from 'rxjs';
 
 export interface DisneyApiResults {
   info: DisneyInfo;
@@ -50,7 +50,7 @@ export class DisneyCharacterService {
    */
   getById(id: number): Observable<DisneyCharacter> {
     return this.httpClient.get<DisneyApiResult>(`${this.BASE_URL}/character/${id}`)
-      .pipe(map((response: DisneyApiResult) => response.data as DisneyCharacter));
+      .pipe(map((response: DisneyApiResult) => response.data));
   }
 
   /**
