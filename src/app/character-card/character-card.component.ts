@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {DisneyCharacter} from '../services/disney-character.service';
 import {RouterLink} from '@angular/router';
 
-
 @Component({
   selector: 'app-character-card',
   imports: [

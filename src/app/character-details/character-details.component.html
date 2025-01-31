@@ -1,44 +1,42 @@
-<div class="bg-body-secondary p-5">
-  <div class="row">
-    @if (character) {
-      <div class="col">
-        <img [ngSrc]="character.imageUrl" width="439" height="529" alt="invalid"/>
-      </div>
-      <div class="col">
-        <h2>{{character.name}}</h2>
-        <p>Last Updated {{character.updatedAt | date: 'longDate'}}</p>
+<div class="row">
+  @if (character) {
+    <div class="col">
+      <img [ngSrc]="character.imageUrl" width="439" height="529" alt="invalid"/>
+    </div>
+    <div class="col">
+      <h2>{{character.name}}</h2>
+      <p>Last Updated {{character.updatedAt | date: 'longDate'}}</p>
 
-        <h5>Featured Films</h5>
-        <ul>
-          @for (film of character.films; track film) {
-            <li>{{film}}</li>
-          } @empty {
-            None
-          }
-        </ul>
+      <h5>Featured Films</h5>
+      <ul>
+        @for (film of character.films; track film) {
+          <li>{{film}}</li>
+        } @empty {
+          None
+        }
+      </ul>
 
-        <h5>Short Films</h5>
-        <ul>
-          @for (film of character.shortFilms; track film) {
-            <li>{{film}}</li>
-          } @empty {
-            None
-          }
-        </ul>
+      <h5>Short Films</h5>
+      <ul>
+        @for (film of character.shortFilms; track film) {
+          <li>{{film}}</li>
+        } @empty {
+          None
+        }
+      </ul>
 
-        <h5>TV Shows</h5>
-        <ul>
-          @for (show of character.tvShows; track show) {
-            <li>{{show}}</li>
-          } @empty {
-            None
-          }
-        </ul>
+      <h5>TV Shows</h5>
+      <ul>
+        @for (show of character.tvShows; track show) {
+          <li>{{show}}</li>
+        } @empty {
+          None
+        }
+      </ul>
 
-        <a [href]="character.sourceUrl" class="btn btn-primary" target="_blank">Explore More Character Details</a>
-      </div>
-    } @else {
-      Loading...
-    }
-  </div>
+      <a [href]="character.sourceUrl" class="btn btn-primary" target="_blank">Explore More Character Details</a>
+    </div>
+  } @else {
+    Loading...
+  }
 </div>

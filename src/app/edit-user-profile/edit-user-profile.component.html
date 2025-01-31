@@ -1,59 +1,57 @@
-<div class="bg-body-secondary p-5">
-  <form (ngSubmit)="saveProfile()">
-    <div class="row mb-3">
-      <div class="col">
-        <label for="firstNameInput" class="form-label">First Name <span class="text-danger">*</span></label>
-        <input [formControl]="formGroup.controls.firstName" class="form-control" id="firstNameInput">
-      </div>
-      <div class="col">
-        <label for="lastNameInput" class="form-label">Last Name <span class="text-danger">*</span></label>
-        <input [formControl]="formGroup.controls.lastName" class="form-control" id="lastNameInput">
-      </div>
+<form (ngSubmit)="saveProfile()">
+  <div class="row mb-3">
+    <div class="col">
+      <label for="firstNameInput" class="form-label">First Name <span class="text-danger">*</span></label>
+      <input [formControl]="formGroup.controls.firstName" class="form-control" id="firstNameInput">
     </div>
-    <div class="row mb-3">
-      <div class="col-6">
-        <label for="birthDateInput" class="form-label">Birth Date <span class="text-danger">*</span></label>
-        <input [formControl]="formGroup.controls.dob" class="form-control" id="birthDateInput" type="date">
-      </div>
+    <div class="col">
+      <label for="lastNameInput" class="form-label">Last Name <span class="text-danger">*</span></label>
+      <input [formControl]="formGroup.controls.lastName" class="form-control" id="lastNameInput">
     </div>
-    <div class="row mb-3">
-      <div class="col">
-        <label for="cityInput" class="form-label">City</label>
-        <input [formControl]="formGroup.controls.city" class="form-control" id="cityInput">
-      </div>
-      <div class="col">
-        <label for="stateInput" class="form-label">State</label>
-        <input [formControl]="formGroup.controls.state" class="form-control" id="stateInput">
-      </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="birthDateInput" class="form-label">Birth Date <span class="text-danger">*</span></label>
+      <input [formControl]="formGroup.controls.dob" class="form-control" id="birthDateInput" type="date">
     </div>
-    <div class="row mb-3">
-      <div class="col">
-        <label for="favoriteCharacterInput" class="form-label">Favorite Character</label>
-        <input [formControl]="formGroup.controls.favoriteCharacter" class="form-control" id="favoriteCharacterInput">
-      </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="cityInput" class="form-label">City</label>
+      <input [formControl]="formGroup.controls.city" class="form-control" id="cityInput">
     </div>
-    <div class="row mb-3">
-      <div class="col">
-        <label for="favoriteRideInput" class="form-label">Favorite Ride</label>
-        <input [formControl]="formGroup.controls.favoriteRide" class="form-control" id="favoriteRideInput">
-      </div>
+    <div class="col">
+      <label for="stateInput" class="form-label">State</label>
+      <input [formControl]="formGroup.controls.state" class="form-control" id="stateInput">
     </div>
-    <div class="row mb-3">
-      <div class="col">
-        <label for="favoriteMovieInput" class="form-label">Favorite Movie</label>
-        <input [formControl]="formGroup.controls.favoriteMovie" class="form-control" id="favoriteMovieInput">
-      </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="favoriteCharacterInput" class="form-label">Favorite Character</label>
+      <input [formControl]="formGroup.controls.favoriteCharacter" class="form-control" id="favoriteCharacterInput">
     </div>
-    <div class="row mb-3">
-      <div class="col-6">
-        <label for="favoriteDisneyParkInput" class="form-label">Favorite Disney Theme Park</label>
-        <input [formControl]="formGroup.controls.favoriteDisneyPark" class="form-control" id="favoriteDisneyParkInput">
-      </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="favoriteRideInput" class="form-label">Favorite Ride</label>
+      <input [formControl]="formGroup.controls.favoriteRide" class="form-control" id="favoriteRideInput">
     </div>
-    <button type="submit" class="btn btn-primary me-3">Update Profile</button>
-    <button type="button" class="btn btn-secondary" routerLink="/view-profile">Cancel</button>
-    @if (currentUser) {
-      <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
-    }
-  </form>
-</div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="favoriteMovieInput" class="form-label">Favorite Movie</label>
+      <input [formControl]="formGroup.controls.favoriteMovie" class="form-control" id="favoriteMovieInput">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-6">
+      <label for="favoriteDisneyParkInput" class="form-label">Favorite Disney Theme Park</label>
+      <input [formControl]="formGroup.controls.favoriteDisneyPark" class="form-control" id="favoriteDisneyParkInput">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary me-3">Update Profile</button>
+  <button type="button" class="btn btn-outline-primary" routerLink="/view-profile">Cancel</button>
+  @if (currentUser) {
+    <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
+  }
+</form>

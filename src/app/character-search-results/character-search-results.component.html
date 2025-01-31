@@ -1,14 +1,12 @@
-<div class="bg-body-secondary p-5">
-  <h2 class="text-center">Search Results - {{searchText}}</h2>
-  @if (searchResults) {
-    Total results: {{searchResults.info.count}}<br/>
-    Total pages: {{searchResults.info.totalPages}}<br/>
-    <div class="row gx-0">
-      @for (character of searchResults.data; track character._id) {
-        <div class="col">
-          <app-character-card [character]="character"/>
-        </div>
-      }
-    </div>
-  }
-</div>
+<h2 class="text-center">Search Results - {{searchText}}</h2>
+@if (searchResults) {
+  Total results: {{searchResults.info.count}}<br/>
+  Total pages: {{searchResults.info.totalPages}}<br/>
+  <div class="row gx-0">
+    @for (character of searchResults.data; track character._id) {
+      <div class="col">
+        <app-character-card [character]="character"/>
+      </div>
+    }
+  </div>
+}

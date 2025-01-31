@@ -10,7 +10,15 @@
       </div>
       <div class="col-xxl-10 col-8">
         <form class="d-flex mx-auto" role="search">
-          <input (input)="search()" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" class="form-control" type="search" placeholder="Find a character..." aria-label="Search">
+          <input
+            (input)="search()"
+            [(ngModel)]="searchText"
+            [ngModelOptions]="{standalone: true}"
+            class="form-control bg-secondary"
+            type="search"
+            placeholder="Find a character..."
+            aria-label="Search"
+          />
         </form>
       </div>
       <div class="col-xxl-1 col-2">
@@ -20,7 +28,9 @@
   </div>
 </nav>
 <main class="container my-4">
-  <router-outlet />
+  <div class="bg-secondary p-5">
+    <router-outlet />
+  </div>
   <app-featured-characters/>
 </main>
 <app-footer/>
