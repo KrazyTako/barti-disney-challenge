@@ -1,3 +1,14 @@
 <div class="bg-body-secondary p-5">
-  user profile works!
+  <h1>User profile works!</h1>
+  @if (userInfo) {
+    <p>
+      You have an account
+    </p>
+  } @else {
+    <p>
+      You do not yet have an account!<br>
+      Click below to create one
+    </p>
+  }
+  <a class="btn btn-primary" routerLink="/edit-profile">Edit Profile</a>
 </div>

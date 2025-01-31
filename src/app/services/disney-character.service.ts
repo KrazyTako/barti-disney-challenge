@@ -2,9 +2,21 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {combineLatest, combineLatestWith, map, Observable, tap} from 'rxjs';
 
+export interface DisneyApiResults {
+  info: DisneyInfo;
+  data: DisneyCharacter[];
+}
+
 export interface DisneyApiResult {
-  info: {};
-  data: DisneyCharacter | DisneyCharacter[];
+  info: DisneyInfo;
+  data: DisneyCharacter;
+}
+
+export interface DisneyInfo {
+  count: number;
+  nextPage: string | null;
+  previousPage: string | null;
+  totalPages: number;
 }
 
 export interface DisneyCharacter {
@@ -29,7 +41,7 @@ export interface DisneyCharacter {
 })
 export class DisneyCharacterService {
 
-  readonly BASE_URL: string = 'https://api.disneyapi.dev';
+  private readonly BASE_URL: string = 'https://api.disneyapi.dev';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -49,8 +61,11 @@ export class DisneyCharacterService {
     return combineLatest(calls);
   }
 
-  filterByName(name: string): Observable<DisneyCharacter[]> {
-    return this.httpClient.get<DisneyCharacter[]>(`${this.BASE_URL}/character?name=${name}`)
+  /**
+   * Filters on the Disney search API by character name contains
+   */
+  filterByName(name: string): Observable<DisneyApiResults> {
+    return this.httpClient.get<DisneyApiResults>(`${this.BASE_URL}/character?name=${name}`)
   }
 
   getAllCharacters(): Observable<DisneyCharacter[]> {
