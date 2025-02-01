@@ -54,7 +54,14 @@
   <div class="row mb-3">
     <div class="col-lg-6">
       <label for="favoriteDisneyParkInput" class="form-label">Favorite Disney Theme Park</label>
-      <input [formControl]="formGroup.controls.favoriteDisneyPark" class="form-control" id="favoriteDisneyParkInput">
+      <select [formControl]="formGroup.controls.favoriteDisneyPark" class="form-select" id="favoriteDisneyParkInput">
+        <option value=""></option>
+        <option value="Anaheim">Anaheim</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="Hong Kong">Hong Kong</option>
+        <option value="Shanghai">Shanghai</option>
+        <option value="Paris">Paris</option>
+      </select>
     </div>
   </div>
   @if (currentUser) {
