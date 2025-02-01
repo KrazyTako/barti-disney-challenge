@@ -24,7 +24,6 @@ export class CharacterSearchResultsComponent implements OnInit {
       this.searchResults = null;
       this.searchText = params['name'];
       this.disneyCharacterService.filterByName(this.searchText).subscribe((results) => {
-        console.log(results);
         this.searchResults = results;
       });
     })
