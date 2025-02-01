@@ -2,7 +2,7 @@
   <h2 class="text-center text-white mb-5">Featured Characters!</h2>
   <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-2 g-xl-4 g-lg-3 g-md-2 g-2">
     @if (!featuredCharacters) {
-      @for (num of [1,2,3,4,5,6,7,8]; track num) {
+      @for (num of [1,2,3,4]; track num) {
         <div class="col">
           <app-character-card-loading/>
         </div>
