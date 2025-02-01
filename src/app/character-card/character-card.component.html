@@ -6,7 +6,7 @@
     <h5 class="card-title">{{ character.name }}</h5>
     <h6>Featured Films</h6>
     <div class="card-text small" style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden">
-      {{character.films}}
+      {{character.films.join(', ')}}
     </div>
   </div>
   <div class="card-footer bg-white" style="border-top: none">
