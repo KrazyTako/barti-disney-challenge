@@ -1,5 +1,11 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import {provideRouter, withComponentInputBinding, withInMemoryScrolling, withRouterConfig} from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withHashLocation,
+  withInMemoryScrolling,
+  withRouterConfig
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -11,7 +17,8 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withRouterConfig({paramsInheritanceStrategy: 'always'}),
-      withInMemoryScrolling({scrollPositionRestoration: 'top'})
+      withInMemoryScrolling({scrollPositionRestoration: 'top'}),
+      withHashLocation()
     ),
     provideHttpClient(),
   ]
