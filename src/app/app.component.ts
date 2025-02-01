@@ -4,33 +4,14 @@ import {FeaturedCharactersComponent} from './featured-characters/featured-charac
 import {FooterComponent} from './footer/footer.component';
 import {FormsModule} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap, tap} from 'rxjs';
+import {HeaderComponent} from './header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FeaturedCharactersComponent, RouterLink, FooterComponent, FormsModule],
+  imports: [RouterOutlet, FeaturedCharactersComponent, RouterLink, FooterComponent, FormsModule, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  searchText = '';
-  private searchSubject = new Subject<string>();
+export class AppComponent {
 
-  router = inject(Router);
-
-  ngOnInit(): void {
-    this.searchSubject.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-    ).subscribe((searchString) => {
-      if (!searchString || searchString.length === 0) {
-        return this.router.navigateByUrl('/');
-      }
-      return this.router.navigate(['/search'], { queryParams: { name: searchString } });
-    });
-  }
-
-  search() {
-    console.log('search triggered with', this.searchText);
-    this.searchSubject.next(this.searchText);
-  }
 }

@@ -1,4 +1,12 @@
-<form (ngSubmit)="saveProfile()">
+<form (ngSubmit)="saveProfile()" #form="ngForm">
+  @if (!currentUser) {
+    <h2 class="mb-4">Create a Profile</h2>
+  }
+  @if (form.submitted && formGroup.invalid) {
+    <div class="alert alert-danger" role="alert">
+      Required fields are missing
+    </div>
+  }
   <div class="row mb-3">
     <div class="col">
       <label for="firstNameInput" class="form-label">First Name <span class="text-danger">*</span></label>
@@ -10,7 +18,7 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-6">
+    <div class="col-lg-6">
       <label for="birthDateInput" class="form-label">Birth Date <span class="text-danger">*</span></label>
       <input [formControl]="formGroup.controls.dob" class="form-control" id="birthDateInput" type="date">
     </div>
@@ -44,14 +52,17 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-6">
+    <div class="col-lg-6">
       <label for="favoriteDisneyParkInput" class="form-label">Favorite Disney Theme Park</label>
       <input [formControl]="formGroup.controls.favoriteDisneyPark" class="form-control" id="favoriteDisneyParkInput">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary me-3">Update Profile</button>
-  <button type="button" class="btn btn-outline-primary" routerLink="/view-profile">Cancel</button>
   @if (currentUser) {
+    <button type="submit" class="btn btn-primary me-3">Update Profile</button>
+    <button type="button" class="btn btn-outline-primary" routerLink="/view-profile">Cancel</button>
     <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
+  } @else {
+    <button type="submit" class="btn btn-primary me-3">Create Profile</button>
+    <button type="button" class="btn btn-outline-primary" routerLink="/">Cancel</button>
   }
 </form>

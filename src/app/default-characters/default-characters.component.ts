@@ -1,6 +1,8 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {CharacterCardComponent} from '../character-card/character-card.component';
 import {DisneyCharacter, DisneyCharacterService} from '../services/disney-character.service';
+import {RouterLink} from '@angular/router';
+import {CharacterCardLoadingComponent} from '../character-card-loading/character-card-loading.component';
 
 const JAFAR_ID = 3347;
 const JASMINE_ID = 3389;
@@ -14,7 +16,8 @@ const OLAF_ID = 4994;
 @Component({
   selector: 'app-default-characters',
   imports: [
-    CharacterCardComponent
+    CharacterCardComponent,
+    CharacterCardLoadingComponent
   ],
   templateUrl: './default-characters.component.html',
   styleUrl: './default-characters.component.css'

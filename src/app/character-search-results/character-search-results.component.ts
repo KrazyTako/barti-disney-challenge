@@ -2,11 +2,13 @@ import {Component, inject, OnInit} from '@angular/core';
 import {DisneyApiResults, DisneyCharacterService} from '../services/disney-character.service';
 import {CharacterCardComponent} from '../character-card/character-card.component';
 import {ActivatedRoute} from '@angular/router';
+import {CharacterCardLoadingComponent} from '../character-card-loading/character-card-loading.component';
 
 @Component({
   selector: 'app-character-search-results',
   imports: [
-    CharacterCardComponent
+    CharacterCardComponent,
+    CharacterCardLoadingComponent
   ],
   templateUrl: './character-search-results.component.html',
   styleUrl: './character-search-results.component.css'
@@ -20,6 +22,7 @@ export class CharacterSearchResultsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
+      this.searchResults = null;
       this.searchText = params['name'];
       this.disneyCharacterService.filterByName(this.searchText).subscribe((results) => {
         console.log(results);

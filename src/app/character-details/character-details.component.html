@@ -1,9 +1,11 @@
 <div class="row">
   @if (character) {
-    <div class="col">
-      <img [ngSrc]="character.imageUrl" width="439" height="529" alt="invalid"/>
+    <div class="col-lg-5">
+      <div class="ratio" style="--bs-aspect-ratio: 120%">
+        <img [src]="character.imageUrl" alt="invalid"/>
+      </div>
     </div>
-    <div class="col">
+    <div class="col-lg-7">
       <h2>{{character.name}}</h2>
       <p>Last Updated {{character.updatedAt | date: 'longDate'}}</p>
 
@@ -37,6 +39,38 @@
       <a [href]="character.sourceUrl" class="btn btn-primary" target="_blank">Explore More Character Details</a>
     </div>
   } @else {
-    Loading...
+    <div class="col-lg-5">
+      <div class="ratio" style="--bs-aspect-ratio: 120%">
+        <svg class="bd-placeholder-img card-img-top" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#868e96"></rect>
+        </svg>
+      </div>
+    </div>
+    <div class="col-lg-7 placeholder-glow">
+      <h2 class="placeholder col-4"></h2>
+
+      <h5>Featured Films</h5>
+      <ul>
+        <li><span class="placeholder col-6"></span></li>
+        <li><span class="placeholder col-4"></span></li>
+        <li><span class="placeholder col-2"></span></li>
+      </ul>
+
+      <h5>Short Films</h5>
+      <ul>
+        <li><span class="placeholder col-3"></span></li>
+        <li><span class="placeholder col-4"></span></li>
+        <li><span class="placeholder col-6"></span></li>
+      </ul>
+
+      <h5>TV Shows</h5>
+      <ul>
+        <li><span class="placeholder col-6"></span></li>
+        <li><span class="placeholder col-2"></span></li>
+        <li><span class="placeholder col-4"></span></li>
+      </ul>
+
+      <a class="btn btn-primary disabled placeholder" target="_blank">Explore More Details</a>
+    </div>
   }
 </div>

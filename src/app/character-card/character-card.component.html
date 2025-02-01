@@ -1,6 +1,6 @@
-<div class="card text-center" style="width: 248px; height: 416px">
-  <div style="height: 248px">
-    <img src="{{character.imageUrl}}" class="card-img-top" style="width: 100%; height: 100%; background-size: cover" [alt]="character.name + ' image'">
+<div class="card text-center">
+  <div class="ratio ratio-1x1">
+    <img src="{{character.imageUrl}}" class="card-img-top" style="object-fit: cover" [alt]="character.name + ' image'">
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ character.name }}</h5>
@@ -9,6 +9,8 @@
     <div class="card-text small" style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden">
       {{character.films}}
     </div>
-      <a routerLink="/character-details/{{character._id}}" class="link-body-emphasis fw-medium">VIEW PROFILE</a>
+  </div>
+  <div class="card-footer bg-white" style="border-top: none">
+    <a routerLink="/character-details/{{character._id}}" class="link-body-emphasis fw-medium">VIEW PROFILE</a>
   </div>
 </div>

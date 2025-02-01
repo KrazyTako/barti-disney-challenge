@@ -1,12 +1,10 @@
-import {Component, inject, Input, numberAttribute, OnInit} from '@angular/core';
-import {CharacterCardComponent} from '../character-card/character-card.component';
+import {Component, inject, Input, numberAttribute} from '@angular/core';
 import {DisneyCharacter, DisneyCharacterService} from '../services/disney-character.service';
-import {DatePipe, NgOptimizedImage} from '@angular/common';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-character-details',
   imports: [
-    NgOptimizedImage,
     DatePipe
   ],
   templateUrl: './character-details.component.html',
