@@ -64,12 +64,20 @@
       </select>
     </div>
   </div>
-  @if (currentUser) {
-    <button type="submit" class="btn btn-primary me-3">Update Profile</button>
-    <button type="button" class="btn btn-outline-primary" routerLink="/view-profile">Cancel</button>
-    <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
-  } @else {
-    <button type="submit" class="btn btn-primary me-3">Create Profile</button>
-    <button type="button" class="btn btn-outline-primary" routerLink="/">Cancel</button>
-  }
+  <div class="row">
+    @if (currentUser) {
+      <div class="col">
+        <button type="submit" class="btn btn-primary me-3">Update Profile</button>
+        <button type="button" class="btn btn-outline-primary" routerLink="/view-profile">Cancel</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-danger float-end" (click)="deleteProfile()">Delete Profile</button>
+      </div>
+    } @else {
+      <div class="col">
+        <button type="submit" class="btn btn-primary me-3">Create Profile</button>
+        <button type="button" class="btn btn-outline-primary" routerLink="/">Cancel</button>
+      </div>
+    }
+  </div>
 </form>
