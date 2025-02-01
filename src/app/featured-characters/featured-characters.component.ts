@@ -15,7 +15,6 @@ const DONAL_DUCK_ID = 1947;
     CharacterCardLoadingComponent
   ],
   templateUrl: './featured-characters.component.html',
-  styleUrl: './featured-characters.component.css'
 })
 export class FeaturedCharactersComponent implements OnInit {
 

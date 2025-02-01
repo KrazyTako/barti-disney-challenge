@@ -11,7 +11,6 @@ import {UserInformation, UserService} from '../services/user.service';
     ReactiveFormsModule
   ],
   templateUrl: './edit-user-profile.component.html',
-  styleUrl: './edit-user-profile.component.css'
 })
 export class EditUserProfileComponent {
 

@@ -8,7 +8,6 @@ import {RouterLink} from '@angular/router';
     RouterLink
   ],
   templateUrl: './character-card.component.html',
-  styleUrl: './character-card.component.css'
 })
 export class CharacterCardComponent {
 

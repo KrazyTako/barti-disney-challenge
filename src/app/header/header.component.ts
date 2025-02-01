@@ -11,7 +11,6 @@ import {debounceTime, distinctUntilChanged, Subject} from 'rxjs';
         RouterLink
     ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
   searchText = '';
@@ -32,7 +31,6 @@ export class HeaderComponent implements OnInit {
   }
 
   search() {
-    console.log('search triggered with', this.searchText);
     this.searchSubject.next(this.searchText);
   }
 }

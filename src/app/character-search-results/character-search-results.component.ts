@@ -11,7 +11,6 @@ import {CharacterCardLoadingComponent} from '../character-card-loading/character
     CharacterCardLoadingComponent
   ],
   templateUrl: './character-search-results.component.html',
-  styleUrl: './character-search-results.component.css'
 })
 export class CharacterSearchResultsComponent implements OnInit {
 

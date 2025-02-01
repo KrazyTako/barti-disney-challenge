@@ -37,10 +37,9 @@ export class UserService {
     const now = new Date();
     user.lastUpdated = now;
     const jsonString = JSON.stringify(user);
-    const daysToExpire = 2;
+    const daysToExpire = 7;
     now.setTime(now.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
     const expires = "; expires=" + now.toUTCString();
-    // console.log(`${COOKIE_NAME}=${encodeURIComponent(jsonString)}${expires}; path=/`)
     document.cookie = `${COOKIE_NAME}=${encodeURIComponent(jsonString)}${expires}; path=/`;
   }
 

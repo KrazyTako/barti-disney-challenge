@@ -8,7 +8,6 @@ import {DatePipe} from '@angular/common';
     DatePipe
   ],
   templateUrl: './character-details.component.html',
-  styleUrl: './character-details.component.css'
 })
 export class CharacterDetailsComponent {
 
