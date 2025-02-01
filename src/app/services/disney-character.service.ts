@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {combineLatest, map, Observable} from 'rxjs';
-
-export interface DisneyApiResults {
-  info: DisneyInfo;
-  data: DisneyCharacter[];
-}
+import {AsyncSubject, combineLatest, map, Observable} from 'rxjs';
 
 export interface DisneyApiResult {
   info: DisneyInfo;
-  data: DisneyCharacter;
+  data: DisneyCharacter | DisneyCharacter[];
 }
 
 export interface DisneyInfo {
@@ -36,21 +31,42 @@ export interface DisneyCharacter {
   updatedAt: string;
 }
 
+const JAFAR_ID = 3347;
+const JASMINE_ID = 3389;
+const ALADDIN_ID = 156;
+const ABU_ID = 25;
+const ELSA_ID = 2099;
+const ANNA_ID = 256;
+const KRISTOFF_ID = 3771;
+const OLAF_ID = 4994;
+
 @Injectable({
   providedIn: 'root'
 })
 export class DisneyCharacterService {
 
+  /**
+   * An AsyncSubject can act as a cache for data that will be fetched once and then reused.
+   * Will be loaded once when this service is created and then always return the initial result.
+   */
+  private defaultCharacters = new AsyncSubject<DisneyCharacter[]>();
+
   private readonly BASE_URL: string = 'https://api.disneyapi.dev';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    const defaultCharacterIds = [JAFAR_ID, JASMINE_ID, ALADDIN_ID, ABU_ID, ELSA_ID, ANNA_ID, KRISTOFF_ID, OLAF_ID];
+    this.getByIds(defaultCharacterIds).subscribe((defaultCharacters) => {
+        this.defaultCharacters.next(defaultCharacters);
+        this.defaultCharacters.complete();
+    })
+  }
 
   /**
    * Gets a single Disney character by its ID
    */
   getById(id: number): Observable<DisneyCharacter> {
     return this.httpClient.get<DisneyApiResult>(`${this.BASE_URL}/character/${id}`)
-      .pipe(map((response: DisneyApiResult) => response.data));
+      .pipe(map((response: DisneyApiResult) => response.data as DisneyCharacter));
   }
 
   /**
@@ -62,13 +78,16 @@ export class DisneyCharacterService {
   }
 
   /**
-   * Filters on the Disney search API by character name contains
+   * Gets the default characters
    */
-  filterByName(name: string): Observable<DisneyApiResults> {
-    return this.httpClient.get<DisneyApiResults>(`${this.BASE_URL}/character?name=${name}`)
+  getDefaultCharacters() {
+    return this.defaultCharacters.asObservable();
   }
 
-  getAllCharacters(): Observable<DisneyCharacter[]> {
-    return this.httpClient.get<DisneyCharacter[]>(`${this.BASE_URL}/character`);
+  /**
+   * Filters on the Disney search API by character name contains
+   */
+  filterByName(name: string): Observable<DisneyApiResult> {
+    return this.httpClient.get<DisneyApiResult>(`${this.BASE_URL}/character?name=${name}`)
   }
 }

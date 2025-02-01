@@ -1,7 +1,7 @@
 <h2 class="text-center">Search Results - {{searchText}}</h2>
 <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-3">
   @if (searchResults) {
-      @for (character of searchResults.data; track character._id) {
+      @for (character of searchResults; track character._id) {
         <div class="col">
           <app-character-card [character]="character"/>
         </div>
@@ -18,13 +18,13 @@
     }
   }
 </div>
-@if (searchResults) {
-    @if (searchResults.info.totalPages > 1) {
+@if (searchInfo) {
+    @if (searchInfo.totalPages > 1) {
       <div class="alert alert-warning mt-2" role="alert">
         There are too many results. Please be more specific with your search to see more results
         <div>
-          Total results: {{searchResults.info.count}}<br/>
-          Total pages: {{searchResults.info.totalPages}}<br/>
+          Total results: {{searchInfo.count}}<br/>
+          Total pages: {{searchInfo.totalPages}}<br/>
         </div>
       </div>
     }

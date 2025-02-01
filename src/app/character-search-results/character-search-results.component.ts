@@ -1,5 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {DisneyApiResults, DisneyCharacterService} from '../services/disney-character.service';
+import {
+  DisneyCharacter,
+  DisneyCharacterService,
+  DisneyInfo
+} from '../services/disney-character.service';
 import {CharacterCardComponent} from '../character-card/character-card.component';
 import {ActivatedRoute} from '@angular/router';
 import {CharacterCardLoadingComponent} from '../character-card-loading/character-card-loading.component';
@@ -17,14 +21,21 @@ export class CharacterSearchResultsComponent implements OnInit {
   searchText = '';
   activatedRoute = inject(ActivatedRoute);
   disneyCharacterService = inject(DisneyCharacterService);
-  searchResults: DisneyApiResults | null = null;
+  searchResults: DisneyCharacter[] | null = null;
+  searchInfo: DisneyInfo | null = null;
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.searchResults = null;
       this.searchText = params['name'];
       this.disneyCharacterService.filterByName(this.searchText).subscribe((results) => {
-        this.searchResults = results;
+        this.searchInfo = results.info;
+        // Search results that return only 1 item get returned as a single item instead of an array.
+        if (Array.isArray(results.data)) {
+          this.searchResults = results.data;
+        } else {
+          this.searchResults = [results.data];
+        }
       });
     })
   }
